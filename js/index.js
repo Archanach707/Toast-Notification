@@ -9,13 +9,17 @@ const massages = [
   'Message Five',
 ]
 
-button.addEventListener('click', () => createNotification('This is invalid data'))
+const types = ['info', 'success', 'error']
 
-function createNotification() {
+button.addEventListener('click', () => createNotification
+('This is invalid data', 'success'))
+
+function createNotification(massage = null, type = null) {
   const notif = document.createElement('div')
   notif.classList.add('toast')
+  notif.classList.add(type ? type : getRandomType())
 
-  notif.innerText = getRandomMessage()
+  notif.innerText = massage ? massage : getRandomMessage()
 
   toasts.appendChild(notif)
 
@@ -28,4 +32,7 @@ function getRandomMessage() {
   return massages[Math.floor(Math.random() * massages.length)]
 }
 
+function getRandomType() {
+  return types[Math.floor(Math.random() * types.length)]
+}
 
