@@ -11,7 +11,15 @@ const massages = [
 
 button.addEventListener('click', () => createNotification())
 
+function createNotification() {
+  const notif = document.createElement('div')
+  notif.classList.add('toast')
 
+  notif.innerText = getRandomMessage()
+}
 
+function getRandomMessage() {
+  return massages[Math.floor(Math.random() * massages.length)]
+}
 
 
